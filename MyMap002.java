@@ -2,17 +2,10 @@ package cn.kilido.collection;
 
 import java.util.LinkedList;
 
-/**
- * 
- * 自定义Map的升级版
- * 提高查询的效率
- * Map底层实现：数组+链表
- * 
- */
 public class MyMap002 {
 	LinkedList[] arr = new LinkedList[999];
 	int size;
-	public void put(Object key,Object value){//键值不能重复；
+	public void put(Object key,Object value){
 		MyEntry e = new MyEntry(key, value);
 		int a = key.hashCode()%arr.length;
 		int hash = key.hashCode();
@@ -26,7 +19,7 @@ public class MyMap002 {
 			for (int i = 0; i <list.size(); i++) {
 				MyEntry e2 = (MyEntry)list.get(i);
 				if(e2.key.equals(key)){
-					e2.value = value;//键值直接覆盖
+					e2.value = value;
 					return;
 				}	
 			}
@@ -49,9 +42,9 @@ public class MyMap002 {
 	
 	public static void main(String[] args) {
 		MyMap002 m = new MyMap002();
-		m.put("白洛因",new Actor("许魏洲"));
-		m.put("顾海",new Actor("黄景瑜"));
-		Actor a = (Actor)m.get("白洛因");
+		m.put("Nick",new Actor("K"));
+		m.put("Luna",new Actor("a"));
+		Actor a = (Actor)m.get("Luna");
 		System.out.println(a.name);
 		
 	
